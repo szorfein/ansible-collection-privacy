@@ -1,0 +1,13 @@
+---
+- name: hostname > /etc/hostname
+  ansible.builtin.copy:
+    dest: /etc/hostname
+    content: '{{ os_hostname }}'
+
+- name: hostname > /etc/hosts
+  ansible.builtin.template:
+    src: hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644

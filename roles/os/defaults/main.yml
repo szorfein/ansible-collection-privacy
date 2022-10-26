@@ -1,2 +1,10 @@
 ---
 # defaults file for os
+# Use the machine-id from Whonix
+os_fix_machine_id: true
+os_fix_hostname: true
+
+os_machine_id: b08dfa6083e7567a1921a715000001fb
+os_hostname: host
+
+os_network_prefer_ipv6: false

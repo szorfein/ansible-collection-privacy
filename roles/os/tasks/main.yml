@@ -1,2 +1,7 @@
 ---
 # tasks file for os
+- import_tasks: machine-id.yml
+  when: os_fix_machine_id | bool
+
+- import_tasks: hostname.yml
+  when: os_fix_hostname | bool
