@@ -1,6 +1,7 @@
 ---
 # defaults file for os
 # Use the machine-id from Whonix
+os_fix_mac_spoof: true
 os_fix_machine_id: true
 os_fix_hostname: true
 

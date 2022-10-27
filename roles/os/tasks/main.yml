@@ -1,7 +1,21 @@
 ---
 # tasks file for os
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/include_vars_module.html
+- name: Load OS-specific vars
+  ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_os_family }}.yml'
+        - main.yml
+      paths:
+        - 'vars'
+
 - import_tasks: machine-id.yml
   when: os_fix_machine_id | bool
 
 - import_tasks: hostname.yml
   when: os_fix_hostname | bool
+
+- import_tasks: mac-spoof.yml
+  when: os_fix_mac_spoof | bool

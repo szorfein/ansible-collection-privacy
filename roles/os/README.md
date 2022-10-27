@@ -1,16 +1,22 @@
 szorfein.privacy.os
 ===================
 
-A brief description of the role goes here.
+A collection to enhance the privacy of your OS (GNU/Linux).
+
+- Change the machine-id.
+- Change the hostname.
+- Spoof the MAC address.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+ansible
 
 Role Variables
 --------------
 
+- `os_fix_mac_spoof`
+  Default: `true`
 - `os_fix_machine_id`
   Default: `true`
 - `os_fix_hostname`
@@ -21,6 +27,9 @@ Role Variables
   Default: `host`
 - `os_network_prefer_ipv6`
   Default: `false`
+- `os_wifi_client`
+  Default: `Undefined`
+  Description: The wifi client to use if you use a wifi card, only `iwd` or `wpa_supplicant` are supported for now.
 
 Dependencies
 ------------
