@@ -16,20 +16,20 @@ Role Variables
 --------------
 
 - `os_fix_mac_spoof`
-  Default: `true`
+  - Default: `true`
 - `os_fix_machine_id`
-  Default: `true`
+  - Default: `true`
 - `os_fix_hostname`
-  Default: `true`
+  - Default: `true`
 - `os_machine_id`
-  Default: `b08dfa6083e7567a1921a715000001fb`
+  - Default: `[b08dfa6083e7567a1921a715000001fb](https://github.com/Whonix/dist-base-files/blob/master/etc/machine-id)`
 - `os_hostname`
-  Default: `host`
+  - Default: `host`
 - `os_network_prefer_ipv6`
-  Default: `false`
+  - Default: `false`
 - `os_wifi_client`
-  Default: `Undefined`
-  Description: The wifi client to use if you use a wifi card, only `iwd` or `wpa_supplicant` are supported for now.
+  - Default: `Undefined`
+  - Description: The wifi client to use if you use a wifi card, only `iwd` or `wpa_supplicant` are supported for now.
 
 Dependencies
 ------------
