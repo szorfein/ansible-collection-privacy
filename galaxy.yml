@@ -1,0 +1,28 @@
+namespace: szorfein
+name: privacy
+version: 0.2.0
+readme: README.md
+
+authors:
+  - Szorfein <szorfein@protonmail.com>
+
+description: A collection to anonimyze system GNU/Linux.
+
+license:
+  - GPL-3.0
+
+tags:
+  - privacy
+  - spoofing
+
+dependencies:
+  ansible.posix: '>=1.0.0'
+  community.general: '>=1.0.0'
+
+repository: https://github.com/szorfein/ansible-collection-privacy
+documentation: https://github.com/szorfein/ansible-collection-privacy
+homepage: https://github.com/szorfein/ansible-collection-privacy
+issues: https://github.com/szorfein/ansible-collection-privacy/issues
+
+build_ignore:
+  - .gitignore
