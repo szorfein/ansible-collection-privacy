@@ -1,8 +1,8 @@
 # ansible-collection-privacy
 
 Include roles:
-+ [os](https://github.com/szorfein/ansible-collection-privacy/tree/main/os)
-+ [tor](https://github.com/szorfein/ansible-collection-privacy/tree/main/tor)
++ [os](https://github.com/szorfein/ansible-collection-privacy/tree/main/roles/os)
++ [tor](https://github.com/szorfein/ansible-collection-privacy/tree/main/roles/tor)
 
 ### Install
 
