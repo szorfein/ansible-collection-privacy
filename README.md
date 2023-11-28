@@ -4,6 +4,10 @@ Include roles:
 + [os](https://github.com/szorfein/ansible-collection-privacy/tree/main/os)
 + [tor](https://github.com/szorfein/ansible-collection-privacy/tree/main/tor)
 
+### Install
+
+    ansible-galaxy collection install git+https://github.com/szorfein/ansible-collection-privacy.git
+
 ### Using this collection
 Please refer to the examples in the readmes of the role.
 
