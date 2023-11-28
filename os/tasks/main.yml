@@ -1,2 +1,15 @@
 ---
 # tasks file for os
+- name: Load OS-specific vars.
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_os_family }}.yml'
+        - main.yml
+      paths:
+        - 'vars'
+
+import_tasks: machine_id.yml
+become: true
+when: os_machine_id | bool
