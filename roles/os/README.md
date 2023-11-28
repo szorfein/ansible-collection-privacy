@@ -19,6 +19,10 @@ Role Variables
    - Default: `b08dfa6083e7567a1921a715000001fb`
    - Description: Each machine has a unique id (man machine-id). We use by default the same ID than Whonix.
    - Type: str
+- `os_mac_change:`
+   - Default: `false`
+   - Description: Make your MAC address random (by NIC) by using macchanger.
+   - Type: bool
 
 Dependencies
 ------------

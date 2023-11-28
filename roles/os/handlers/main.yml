@@ -1,2 +1,7 @@
 ---
 # handlers file for os
+- name: systemd full restart
+  become: true
+  ansible.builtin.service:
+    daemon_reload: true
+  when: ansible_service_mgr == 'systemd'
