@@ -1,4 +1,9 @@
 ---
+- name: machine-id > /etc/machine-id
+  ansible.builtin.copy:
+    dest: /etc/machine-id
+    content: '{{ os_machine_id_value }}\n'
+
 - name: machine-id > search /var/lib/dbus/machine-id
   ansible.builtin.stat:
     path: /var/lib/dbus/machine-id
@@ -7,16 +12,5 @@
 - name: machine-id > /var/lib/dbus/machine-id
   ansible.builtin.copy:
     dest: /var/lib/dbus/machine-id
-    content: '{{ os_machine_id_value }}\n'
-  when: p.stat.exists
-
-- name: machine-id > search /etc/machine-id
-  ansible.builtin.stat:
-    path: /etc/machine-id
-  register: p
-
-- name: machine-id > /etc/machine-id
-  ansible.builtin.copy:
-    dest: /etc/machine-id
     content: '{{ os_machine_id_value }}\n'
   when: p.stat.exists
