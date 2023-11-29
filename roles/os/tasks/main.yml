@@ -13,3 +13,7 @@
 - import_tasks: machine_id.yml
   become: true
   when: os_machine_id | bool
+
+- import_tasks: hostname.yml
+  become: true
+  when: os_hostname | bool

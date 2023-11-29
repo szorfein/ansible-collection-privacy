@@ -2,6 +2,7 @@ Role Name
 =========
 
 + Anonymize the unique machine ID identifier.
++ Use generic value for identifiers like hostname=host, timezone=utc, etc...
 
 Requirements
 ------------
@@ -19,6 +20,20 @@ Role Variables
    - Default: `b08dfa6083e7567a1921a715000001fb`
    - Description: Each machine has a unique id (man machine-id). We use by default the same ID than Whonix.
    - Type: str
+- `os_hostname:`
+   - Default: `false`
+   - Description: Change or not the value of hostname.
+   - Type: bool
+- `os_hostname_value:`
+   - Default: `'host'`
+   - Description: The new value for hostname.
+   - Type: str
+- `os_hostname_list:`
+   - Default: `[]`
+   - Description: If other hosts to add on /etc/hosts. e.g: ["192.168.1.1 router", "14.13.144.120 superhost"]
+   - Type: list
+
+
 
 Dependencies
 ------------

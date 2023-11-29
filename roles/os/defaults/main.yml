@@ -3,3 +3,7 @@
 os_machine_id: false
 # a 32 hexa lowercase character
 os_machine_id_value: 'b08dfa6083e7567a1921a715000001fb'
+
+os_hostname: false
+os_hostname_value: 'host'
+os_hostname_list: []
