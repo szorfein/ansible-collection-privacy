@@ -1,0 +1,7 @@
+---
+- name: timezone > apply {{ os_timezone_value }} by link
+  ansible.builtin.file:
+    src: '{{ os_timezone_dir }}/{{ os_timezone_value }}'
+    dest: '{{ os_timezone_path }}'
+    state: link
+    force: true

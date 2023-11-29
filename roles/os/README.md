@@ -19,6 +19,14 @@ Role Variables
    - Default: `b08dfa6083e7567a1921a715000001fb`
    - Description: Each machine has a unique id (man machine-id). We use by default the same ID than Whonix.
    - Type: str
+- `os_timezone:`
+   - Default: `false`
+   - Description: Change timezone.
+   - Type: bool
+- `os_timezone_value:`
+   - Default: `'UTC'`
+   - Description: Set timezone to UTC by default. With systemd, see `timedatectl list-timezones`.
+   - Type: str
 
 Dependencies
 ------------
