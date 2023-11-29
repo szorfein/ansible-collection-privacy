@@ -1,12 +1,12 @@
 namespace: szorfein
 name: privacy
-version: 0.4.0
+version: 0.8.0
 readme: README.md
 
 authors:
   - Szorfein <szorfein@protonmail.com>
 
-description: A collection to anonimyze system GNU/Linux.
+description: A collection to enhance privacy of system GNU/Linux.
 
 license:
   - GPL-3.0
@@ -16,6 +16,7 @@ license_file: LICENSE
 tags:
   - privacy
   - spoofing
+  - linux
 
 dependencies:
   ansible.posix: '>=1.0.0'

@@ -3,6 +3,7 @@ Role Name
 
 + Anonymize the unique machine ID identifier.
 + Use generic value for identifiers like hostname=host, timezone=utc, etc...
++ Spoof the MAC address on all interfaces using macchanger.
 
 Requirements
 ------------
@@ -22,7 +23,7 @@ Role Variables
    - Type: str
 - `os_hostname_list:`
    - Default: `[]`
-   - Description: If other hosts to add on /etc/hosts. e.g: ["192.168.1.1 router", "14.13.144.120 superhost"]
+   - Description: If others lines to add to /etc/hosts, add them here. e.g: ["192.168.1.1 router", "14.13.144.120 superhost"]
    - Type: list
 - `os_machine_id:`
    - Default: `false`
