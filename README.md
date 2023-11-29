@@ -1,5 +1,7 @@
 # ansible-collection-privacy
 
+Ansible collection to enhance privacy of system GNU/Linux.
+
 Include roles:
 + [os](https://github.com/szorfein/ansible-collection-privacy/tree/main/roles/os)
 + [tor](https://github.com/szorfein/ansible-collection-privacy/tree/main/roles/tor)

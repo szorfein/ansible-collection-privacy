@@ -1,2 +1,6 @@
 ---
 # vars file for os
+os_pkg_macchange: 'macchanger'
+
+os_timezone_dir: /usr/share/zoneinfo
+os_timezone_path: /etc/localtime

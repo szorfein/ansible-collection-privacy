@@ -1,0 +1,42 @@
+---
+- name: macchanger > installing {{ os_pkg_macchange }}
+  ansible.builtin.package:
+    name: '{{ os_pkg_macchange }}'
+    state: present
+
+- name: macchanger > installing service
+  ansible.builtin.template:
+    src: macchanger.j2
+    dest: /etc/systemd/system/macspoof@.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - systemd full restart
+  when: ansible_service_mgr == 'systemd'
+
+- name: macchanger > enabling service
+  ansible.builtin.service:
+    name: 'macspoof@{{ interface }}.service'
+    enabled: true
+  loop: '{{ ansible_interfaces }}'
+  loop_control:
+    loop_var: interface
+  when:
+    - interface.startswith('w') or interface.startswith('e')
+    - ansible_service_mgr == 'systemd'
+
+- name: macchanger > check if iwd is installed
+  ansible.builtin.stat:
+    path: /etc/iwd/main.conf
+  register: p
+
+# Make sure other tools stop spoofing mac addr
+- name: macchanger > control iwd config
+  ansible.builtin.lineinfile:
+    path: /etc/iwd/main.conf
+    regexp: '{{ item }}'
+    state: absent
+  loop:
+    - '^AddressRandomization'
+  when: p.stat.exists
