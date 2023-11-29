@@ -1,0 +1,10 @@
+---
+- name: hostname > /etc/hostname
+  ansible.builtin.copy:
+    dest: /etc/hostname
+    content: "{{ os_hostname_value }}\n"
+
+- name: hostname > /etc/hosts
+  ansible.builtin.template:
+    src: hosts.j2
+    dest: /etc/hosts

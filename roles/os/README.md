@@ -2,6 +2,7 @@ Role Name
 =========
 
 + Anonymize the unique machine ID identifier.
++ Use generic value for identifiers like hostname=host, timezone=utc, etc...
 
 Requirements
 ------------
@@ -11,6 +12,18 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
+- `os_hostname:`
+   - Default: `false`
+   - Description: Change or not the value of hostname.
+   - Type: bool
+- `os_hostname_value:`
+   - Default: `'host'`
+   - Description: The new value for hostname.
+   - Type: str
+- `os_hostname_list:`
+   - Default: `[]`
+   - Description: If other hosts to add on /etc/hosts. e.g: ["192.168.1.1 router", "14.13.144.120 superhost"]
+   - Type: list
 - `os_machine_id:`
    - Default: `false`
    - Description: Erase or not the default unique ID.

@@ -10,6 +10,10 @@
       paths:
         - 'vars'
 
+- import_tasks: hostname.yml
+  become: true
+  when: os_hostname | bool
+
 - import_tasks: machine_id.yml
   become: true
   when: os_machine_id | bool
