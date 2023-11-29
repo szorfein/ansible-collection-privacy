@@ -21,3 +21,7 @@
 - import_tasks: machine_id.yml
   become: true
   when: os_machine_id | bool
+
+- import_tasks: timezone.yml
+  become: true
+  when: os_timezone | bool

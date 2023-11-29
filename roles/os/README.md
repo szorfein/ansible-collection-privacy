@@ -36,6 +36,14 @@ Role Variables
    - Default: `false`
    - Description: Make your MAC address random (by NIC) by using macchanger.
    - Type: bool
+- `os_timezone:`
+   - Default: `false`
+   - Description: Change timezone.
+   - Type: bool
+- `os_timezone_value:`
+   - Default: `'UTC'`
+   - Description: Set timezone to UTC by default. With systemd, see `timedatectl list-timezones`.
+   - Type: str
 
 Dependencies
 ------------
