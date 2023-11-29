@@ -14,10 +14,10 @@
   become: true
   when: os_hostname | bool
 
-- import_tasks: machine_id.yml
-  become: true
-  when: os_machine_id | bool
-
 - import_tasks: macchanger.yml
   become: true
   when: os_mac_change | bool
+
+- import_tasks: machine_id.yml
+  become: true
+  when: os_machine_id | bool
