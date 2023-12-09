@@ -45,9 +45,8 @@
   ansible.builtin.file:
     path: /etc/udev/rules.d
     state: directory
-  when:
-    - ansible_service_mgr == 'openrc' and not ansible_service_mgr == 'systemd'
-    - ansible_service_mgr == 'runit'
+  when: (ansible_service_mgr == 'openrc' and not ansible_service_mgr == 'systemd')
+    or ansible_service_mgr == 'runit'
 
 - name: macchanger > add udev rules
   ansible.builtin.template:
@@ -56,7 +55,6 @@
     owner: root
     group: root
     mode: 0644
-  when:
-    - ansible_service_mgr == 'openrc' and not ansible_service_mgr == 'systemd'
-    - ansible_service_mgr == 'runit'
+  when: (ansible_service_mgr == 'openrc' and not ansible_service_mgr == 'systemd')
+    or ansible_service_mgr == 'runit'
 

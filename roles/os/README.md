@@ -3,7 +3,7 @@ Role Name
 
 + Anonymize the unique machine ID identifier.
 + Use generic value for identifiers like hostname=host, timezone=utc, etc...
-+ Spoof the MAC address on all interfaces using macchanger.
++ Spoof the MAC address on all interfaces using macchanger with systemd or udev.
 
 Requirements
 ------------
@@ -60,12 +60,7 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
          - { role: privacy.os, os_machine_id: true }
 
-License
--------
+References
+----------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+- https://gitlab.tails.boum.org/tails/tails
