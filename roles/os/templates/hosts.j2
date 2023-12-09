@@ -2,9 +2,9 @@
 # See hosts(5) for details
 
 {% if 'lo' in ansible_interfaces %}
-{{ ansible_lo.ipv4.address }} {{ os_hostname_value }}
+{{ ansible_lo.ipv4.address }} {{ os_hostname_value }}.localdomain {{ os_hostname_value }}
 {% if ansible_lo.ipv6 is defined %}
-{{ ansible_lo.ipv6.address }} {{ os_hostname_value }}
+{{ ansible_lo.ipv6[0].address }} {{ os_hostname_value }}.localdomain {{ os_hostname_value }} ip6-localhost
 {% endif %}
 {% endif %}
 
