@@ -1,7 +1,6 @@
 galaxy_info:
-  author: your name
-  description: your role description
-  company: your company (optional)
+  author: szorfein
+  description: Privacy enhancement for GNU/Linux.
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
@@ -28,6 +27,8 @@ galaxy_info:
   # https://galaxy.ansible.com/api/v1/platforms/
   platforms:
     - name: ArchLinux
+    - name: Gentoo
+    - name: Void
   # - name: Fedora
   #   versions:
   #   - all
