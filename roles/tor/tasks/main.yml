@@ -1,5 +1,15 @@
 ---
 # tasks file for tor
+- name: Load OS-specific vars.
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_os_family }}.yml'
+        - main.yml
+      paths:
+        - 'vars'
+
 - import_tasks: tor.yml
   become: true
   when: tor | bool

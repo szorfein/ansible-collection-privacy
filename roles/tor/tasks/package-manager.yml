@@ -8,3 +8,24 @@
     line: 'XferCommand = /usr/bin/curl --socks5-hostname {{ tor_localhost }}:{{ tor_package_manager_port }} --location --continue-at - --fail --output %o %u'
     state: present
   when: ansible_distribution == 'Archlinux'
+
+- name: pkg-manager > ensure xbps.d exist on Void
+  ansible.builtin.file:
+    path: /etc/xbps.d
+    state: directory
+  when: ansible_distribution == 'Void'
+
+- name: pkg-manager > copying repo file
+  ansible.builtin.file:
+    src: /usr/share/xbps.d/00-repository-main.conf
+    dest: /etc/xbps.d/00-repository-main.conf
+    state: hard
+  when: ansible_distribution == 'Void'
+
+# https://docs.voidlinux.org/xbps/repositories/mirrors/tor.html#using-tor-mirrors
+- name: pkg-manager > change repo address
+  ansible.builtin.replace:
+    path: /etc/xbps.d/00-repository-main.conf
+    regexp: 'https://repo-default.voidlinux.org'
+    replace: '{{ tor_package_manager_onion }}'
+  when: ansible_distribution == 'Void' and tor_package_manager_onion is defined
