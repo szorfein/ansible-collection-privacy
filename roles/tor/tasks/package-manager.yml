@@ -29,3 +29,24 @@
     regexp: 'https://repo-default.voidlinux.org'
     replace: '{{ tor_package_manager_onion }}'
   when: ansible_distribution == 'Void' and tor_package_manager_onion is defined
+
+- name: pkg-manager > need to set socks_proxy
+  ansible.builtin.lineinfile:
+    path: /etc/profile
+    regexp: ^export SOCKS_PROXY=
+    insertafter: '^umask*'
+    line: 'export SOCKS_PROXY="{{ tor_localhost }}:{{ tor_package_manager_port }}"'
+    state: present
+  when: ansible_distribution == 'Void'
+
+- name: pkg-manager > checking sudo...
+  ansible.builtin.stat:
+    path: /etc/sudoers.d
+  register: p
+
+- name: pkg-manager > add sudo permission
+  ansible.builtin.copy:
+    dest: /etc/sudoers.d/tor
+    content: 'Defaults env_keep += "SOCKS_PROXY"'
+    mode: 0644
+  when: ansible_distribution == 'Void' and p.stat.exists
