@@ -1,0 +1,10 @@
+---
+# https://wiki.archlinux.org/title/tor#Pacman
+- name: pkg-manager > configuring for Arch
+  ansible.builtin.lineinfile:
+    path: /etc/pacman.conf
+    regexp: ^XferCommand =
+    insertafter: '^\[options\]$'
+    line: 'XferCommand = /usr/bin/curl --socks5-hostname {{ tor_localhost }}:{{ tor_package_manager_port }} --location --continue-at - --fail --output %o %u'
+    state: present
+  when: ansible_distribution == 'Archlinux'

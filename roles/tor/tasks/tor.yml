@@ -9,12 +9,28 @@
     name: tor
     enabled: true
 
+- name: tor > ensure config directory {{ tor_config_dir }} exist
+  ansible.builtin.file:
+    path: '{{ tor_config_dir }}'
+    state: directory
+
+- name: tor > installing socksport template...
+  ansible.builtin.template:
+    src: socksport.j2
+    dest: '{{ tor_config_dir }}/socksport.conf'
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart tor
+
 - name: tor > configuring...
   ansible.builtin.lineinfile:
     path: /etc/tor/torrc
     regexp: '{{ item.regexp }}'
     line: '{{ item.line }}'
   with_items:
+    - regexp: '^\%include'
+      line: '%include {{ tor_config_dir }}/*.conf'
     - regexp: ^ConnectionPadding
       line: ConnectionPadding 1
     - regexp: ^Sandbox

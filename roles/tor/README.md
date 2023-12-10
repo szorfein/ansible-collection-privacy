@@ -20,6 +20,22 @@ Role Variables
   - Default: `false`
   - Description: Install and configuring tor.
   - Type: bool
+- `tor_config_dir`
+  - Default: `/etc/torrc.d`
+  - Description: Directory used to install configuration.
+  - Type: str
+- `tor_localhost`
+  - Default: `127.0.0.1`
+  - Description: Address for the loopback address, normally right.
+  - Type: str
+- `tor_package_manager`
+  - Default: `false`
+  - Description: Configure package manager to use tor.
+  - Type: bool
+- `tor_package_manager_port`
+  - Default: `9052`
+  - Description: Port to redirect on tor via SocksPort.
+  - Type: str
 
 Dependencies
 ------------

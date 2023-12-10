@@ -3,3 +3,7 @@
 - import_tasks: tor.yml
   become: true
   when: tor | bool
+
+- import_tasks: package-manager.yml
+  become: true
+  when: tor_package_manager | bool

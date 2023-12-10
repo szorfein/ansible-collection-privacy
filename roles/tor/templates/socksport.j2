@@ -1,0 +1,4 @@
+{% if tor_package_manager | bool %}
+# Used by package_manager
+SocksPort {{ tor_localhost }}:{{ tor_package_manager_port }} NoIsolateDestAddr NoIsolateDestPort NoIsolateClientProtocol
+{% endif %}
