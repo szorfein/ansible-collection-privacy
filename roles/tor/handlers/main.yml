@@ -1,2 +1,7 @@
 ---
 # handlers file for tor
+- name: restart tor
+  become: true
+  ansible.builtin.service:
+    name: tor
+    state: restarted

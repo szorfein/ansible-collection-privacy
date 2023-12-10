@@ -1,2 +1,5 @@
 ---
 # tasks file for tor
+- import_tasks: tor.yml
+  become: true
+  when: tor | bool
