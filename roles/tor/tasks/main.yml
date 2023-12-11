@@ -18,5 +18,5 @@
   become: true
   when: tor_package_manager | bool
 
-- import_tasks: curl.yml
-  when: tor_curl | bool
+- import_tasks: stream.yml
+  when: tor_stream | bool

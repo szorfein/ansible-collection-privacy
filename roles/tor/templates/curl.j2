@@ -6,7 +6,7 @@ set -o errexit -o nounset
 # tail: https://gitlab.tails.boum.org/tails/tails/-/blob/master/config/chroot_local-includes/usr/local/bin/curl
 
 username=curl-$(head -c 12 /dev/urandom | xxd -p)
-ALL_PROXY="socks5://${username}:0@{{ tor_localhost }}:{{ tor_curl_port }}"
+ALL_PROXY="socks5://${username}:0@{{ tor_localhost }}:{{ tor_stream_port_curl }}"
 export ALL_PROXY
 
 exec /usr/bin/curl --tlsv1.3 "$@"

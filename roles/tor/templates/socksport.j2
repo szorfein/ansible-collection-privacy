@@ -3,7 +3,10 @@
 SocksPort {{ tor_localhost }}:{{ tor_package_manager_port }} NoIsolateDestAddr NoIsolateDestPort NoIsolateClientProtocol
 {% endif %}
 
-{% if tor_curl | bool %}
+{% if tor_stream | bool %}
+# Default (used for torsocks)
+SocksPort {{ tor_localhost }}:{{ tor_stream_port_default }} IsolateDestAddr IsolateDestPort
+
 # Curl port
-SocksPort {{ tor_localhost }}:{{ tor_curl_port }} IsolateDestAddr IsolateDestPort
+SocksPort {{ tor_localhost }}:{{ tor_stream_port_curl }} IsolateDestAddr IsolateDestPort
 {% endif %}

@@ -7,5 +7,6 @@ tor_localhost: 127.0.0.1
 tor_package_manager: false
 tor_package_manager_port: 9052
 
-tor_curl: false
-tor_curl_port: 9053
+tor_stream: false
+tor_stream_port_default: 9050
+tor_stream_port_curl: 9053

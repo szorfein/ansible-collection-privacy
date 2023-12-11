@@ -18,7 +18,7 @@ Role Variables
 
 - `tor`
   - Default: `false`
-  - Description: Install and configuring tor.
+  - Description: Install and configuring tor and torsocks.
   - Type: bool
 - `tor_config_dir`
   - Default: `/etc/torrc.d`
@@ -36,13 +36,17 @@ Role Variables
   - Default: `9052`
   - Description: Port to redirect on tor via SocksPort.
   - Type: str
-- `tor_curl`
+- `tor_stream`
   - Default: `false`
-  - Description: Install and configure Curl with tor.
+  - Description: Install and configure apps to use different tor circuit.
   - Type: bool
-- `tor_curl_port`
+- `tor_stream_port_default`
+  - Default: `9050`
+  - Description: Port used for default/torsocks stream.
+  - Type: str
+- `tor_stream_port_curl`
   - Default: `9053`
-  - Description: Port used on socks5.
+  - Description: Port used for Curl on socks5.
   - Type: str
 
 Dependencies
