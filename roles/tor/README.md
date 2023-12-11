@@ -36,6 +36,14 @@ Role Variables
   - Default: `9052`
   - Description: Port to redirect on tor via SocksPort.
   - Type: str
+- `tor_curl`
+  - Default: `false`
+  - Description: Install and configure Curl with tor.
+  - Type: bool
+- `tor_curl_port`
+  - Default: `9053`
+  - Description: Port used on socks5.
+  - Type: str
 
 Dependencies
 ------------

@@ -1,0 +1,26 @@
+---
+- name: curl > installing dependencies
+  become: true
+  ansible.builtin.package:
+    name: curl
+    state: present
+
+- name: curl > installing script in /usr/local/bin/curl...
+  become: true
+  ansible.builtin.template:
+    src: curl.j2
+    dest: /usr/local/bin/curl
+    mode: 0777
+
+- name: curl > required home directory
+  ansible.builtin.file:
+    path: '{{ ansible_user_dir }}//bin'
+    state: directory
+
+- name: curl > installing script for {{ ansible_user_dir }}...
+  ansible.builtin.template:
+    src: curl.j2
+    dest: '{{ ansible_user_dir }}/bin/curl'
+    owner: '{{ ansible_user_id }}'
+    group: '{{ ansible_user_id }}'
+    mode: 0700

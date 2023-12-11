@@ -15,12 +15,17 @@
     state: directory
   when: ansible_distribution == 'Void'
 
+- name: pkg-manager > checking file...
+  ansible.builtin.stat:
+    path: /etc/xbps.d/00-repository-main.conf
+  register: p
+
 - name: pkg-manager > copying repo file
   ansible.builtin.file:
     src: /usr/share/xbps.d/00-repository-main.conf
     dest: /etc/xbps.d/00-repository-main.conf
     state: hard
-  when: ansible_distribution == 'Void'
+  when: ansible_distribution == 'Void' and not p.stat.exists
 
 # https://docs.voidlinux.org/xbps/repositories/mirrors/tor.html#using-tor-mirrors
 - name: pkg-manager > change repo address
@@ -47,6 +52,6 @@
 - name: pkg-manager > add sudo permission
   ansible.builtin.copy:
     dest: /etc/sudoers.d/tor
-    content: 'Defaults env_keep += "SOCKS_PROXY"'
+    content: "Defaults env_keep += \"SOCKS_PROXY\"\n"
     mode: 0644
   when: ansible_distribution == 'Void' and p.stat.exists

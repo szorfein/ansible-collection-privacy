@@ -2,3 +2,8 @@
 # Used by package_manager
 SocksPort {{ tor_localhost }}:{{ tor_package_manager_port }} NoIsolateDestAddr NoIsolateDestPort NoIsolateClientProtocol
 {% endif %}
+
+{% if tor_curl | bool %}
+# Curl port
+SocksPort {{ tor_localhost }}:{{ tor_curl_port }} IsolateDestAddr IsolateDestPort
+{% endif %}
