@@ -1,11 +1,11 @@
 ---
-- name: curl > installing dependencies
+- name: stream > installing dependencies
   become: true
   ansible.builtin.package:
     name: curl
     state: present
 
-- name: curl > installing script in /usr/local/bin...
+- name: stream > installing script in /usr/local/bin...
   become: true
   ansible.builtin.template:
     src: '{{ item.src }}'
@@ -16,13 +16,17 @@
       name: curl
     - src: git.j2
       name: git
+    - src: wget.j2
+      name: wget
+    - src: whois.j2
+      name: whois
 
-- name: curl > required home directory
+- name: stream > required home directory
   ansible.builtin.file:
-    path: '{{ ansible_user_dir }}//bin'
+    path: '{{ ansible_user_dir }}/bin'
     state: directory
 
-- name: curl > installing script for {{ ansible_user_dir }}...
+- name: stream > installing script for {{ ansible_user_dir }}...
   ansible.builtin.template:
     src: '{{ item.src }}'
     dest: '{{ ansible_user_dir }}/{{ item.dest }}'
@@ -34,3 +38,7 @@
       dest: bin/curl
     - src: git.j2
       dest: bin/git
+    - src: wget.j2
+      dest: bin/wget
+    - src: whois.j2
+      dest: bin/whois

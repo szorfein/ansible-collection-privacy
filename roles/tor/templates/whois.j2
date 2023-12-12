@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+set -o errexit
+
+exec torsocks --isolate /usr/bin/whois "$@"
