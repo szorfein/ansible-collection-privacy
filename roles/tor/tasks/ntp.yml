@@ -1,0 +1,54 @@
+---
+- name: ntp > installing dependencies
+  ansible.builtin.package:
+    name:
+      - curl
+      - cronie
+    state: present
+
+- name: ntp > installing secure-time-sync
+  ansible.builtin.get_url:
+    dest: /usr/local/bin/secure-time-sync
+    url: https://raw.githubusercontent.com/szorfein/secure-time-sync/main/secure-time-sync.sh
+    checksum: sha256:9dde9b9cba77930d66d1a82651c377b5b7ea2bbc40f02e3490e575bac3dc5a96
+    mode: 0755
+  register: stsm
+
+- name: ntp > replacing curl occurence by /usr/bin/curl
+  ansible.builtin.replace:
+    path: /usr/local/bin/secure-time-sync
+    regexp: '{{ item.regexp }}'
+    replace: '{{ item.replace }}'
+  with_items:
+    - regexp: 'curl'
+      replace: '/usr/bin/curl'
+    - regexp: ':9050'
+      replace: ':{{ tor_ntp_port }}'
+  when: stsm.changed
+
+- name: ntp > cron entry like "@reboot secure-time-sync"
+  ansible.builtin.cron:
+    name: "secure-time-sync for reboot"
+    special_time: reboot
+    job: "sleep 10 && /usr/local/bin/secure-time-sync --use-tor"
+
+- name: ntp > enabling service
+  ansible.builtin.service:
+    name: cronie
+    enabled: true
+
+- name: ntp > disabling systemd ntp services
+  ansible.builtin.service:
+    name: systemd-timesyncd
+    state: stopped
+    enabled: false
+  ignore_errors: true
+  when: ansible_service_mgr == 'systemd'
+
+- name: ntp > removing useless ntp packages
+  ansible.builtin.package:
+    name:
+      - chrony
+      - ntp
+      - openntpd
+    state: absent

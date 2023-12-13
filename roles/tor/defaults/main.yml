@@ -10,3 +10,6 @@ tor_package_manager_port: 9052
 tor_stream: false
 tor_stream_port_default: 9050
 tor_stream_port_curl: 9053
+
+tor_ntp: false
+tor_ntp_port: 9054

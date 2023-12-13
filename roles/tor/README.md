@@ -11,7 +11,7 @@ szorfein.privacy.tor
   - wget
   - whois
 - Install Onionshare.
-- Disable NTP and update time with tor.
+- Disable NTP and update time with tor and .onion address.
 
 Requirements
 ------------
@@ -32,6 +32,14 @@ Role Variables
 - `tor_localhost`
   - Default: `127.0.0.1`
   - Description: Address for the loopback address, normally right.
+  - Type: str
+- `tor_ntp`
+  - Default: `false`
+  - Description: Replace ntp by a more secure solution (https/tor).
+  - Type: bool
+- `tor_ntp_port`
+  - Default: `9054`
+  - Description: Socks5 port for ntp used for tor.
   - Type: str
 - `tor_package_manager`
   - Default: `false`

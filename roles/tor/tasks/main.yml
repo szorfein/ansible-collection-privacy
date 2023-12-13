@@ -20,3 +20,7 @@
 
 - import_tasks: stream.yml
   when: tor_stream | bool
+
+- import_tasks: ntp.yml
+  become: true
+  when: tor_ntp | bool

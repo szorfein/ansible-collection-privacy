@@ -10,7 +10,7 @@
   ansible.builtin.template:
     src: '{{ item.src }}'
     dest: '/usr/local/bin/{{ item.name }}'
-    mode: 0777
+    mode: 0755
   with_items:
     - src: curl.j2
       name: curl
