@@ -26,6 +26,8 @@
       replace: ':{{ tor_ntp_port }}'
   when: stsm.changed
 
+# https://ostechnix.com/a-beginners-guide-to-cron-jobs/
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/cron_module.html
 - name: ntp > cron entry like "@reboot secure-time-sync"
   ansible.builtin.cron:
     name: "secure-time-sync for reboot"

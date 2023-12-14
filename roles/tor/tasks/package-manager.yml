@@ -40,7 +40,7 @@
     path: /etc/profile
     regexp: ^export SOCKS_PROXY=
     insertafter: '^umask*'
-    line: 'export SOCKS_PROXY="{{ tor_localhost }}:{{ tor_package_manager_port }}"'
+    line: 'export SOCKS_PROXY="socks5://{{ tor_localhost }}:{{ tor_package_manager_port }}"'
     state: present
   when: ansible_distribution == 'Void'
 
