@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+exec /usr/bin/torsocks --isolate /usr/bin/wget "$@"

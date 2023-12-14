@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+# whonix: https://www.kicksecure.com/wiki/Secure_Downloads#curl
+# tail: https://gitlab.tails.boum.org/tails/tails/-/blob/master/config/chroot_local-includes/usr/local/bin/curl
+
+username=curl-$(head -c 12 /dev/urandom | xxd -p)
+proxy="${username}:0@{{ tor_localhost }}:{{ tor_stream_port_curl }}"
+
+#exec /usr/bin/curl --socks5-hostname "$proxy" --tlsv1.3 "$@"
+exec /usr/bin/curl --socks5-hostname "$proxy" "$@"

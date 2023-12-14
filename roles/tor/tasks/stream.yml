@@ -1,0 +1,44 @@
+---
+- name: stream > installing dependencies
+  become: true
+  ansible.builtin.package:
+    name: curl
+    state: present
+
+- name: stream > installing script in /usr/local/bin...
+  become: true
+  ansible.builtin.template:
+    src: '{{ item.src }}'
+    dest: '/usr/local/bin/{{ item.name }}'
+    mode: 0755
+  with_items:
+    - src: curl.j2
+      name: curl
+    - src: git.j2
+      name: git
+    - src: wget.j2
+      name: wget
+    - src: whois.j2
+      name: whois
+
+- name: stream > required home directory
+  ansible.builtin.file:
+    path: '{{ ansible_user_dir }}/bin'
+    state: directory
+
+- name: stream > installing script for {{ ansible_user_dir }}...
+  ansible.builtin.template:
+    src: '{{ item.src }}'
+    dest: '{{ ansible_user_dir }}/{{ item.dest }}'
+    owner: '{{ ansible_user_id }}'
+    group: '{{ ansible_user_id }}'
+    mode: 0700
+  with_items:
+    - src: curl.j2
+      dest: bin/curl
+    - src: git.j2
+      dest: bin/git
+    - src: wget.j2
+      dest: bin/wget
+    - src: whois.j2
+      dest: bin/whois
