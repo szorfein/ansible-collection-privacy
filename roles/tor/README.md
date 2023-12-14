@@ -3,14 +3,11 @@ szorfein.privacy.tor
 
 - Install and configure Tor (check for [ConnectionPadding](https://www.whonix.org/wiki/Whonix-Gateway_Security#Tor_Connection_Padding), [Sandbox](https://www.whonix.org/wiki/Whonix-Gateway_Security#Seccomp)...).
 - Configure package manager to use tor [Arch](https://wiki.archlinux.org/title/Tor#Pacman) - [Void](https://docs.voidlinux.org/xbps/repositories/mirrors/tor.html).
-- Use iptables to redirect local traffic throught tor, also disable udp protocol.
 - Prevent identity correlation through circuit sharing by using Tor Stream Isolation.
   - curl
   - git
-  - package-manager | pacman | xbps
   - wget
   - whois
-- Install Onionshare.
 - Disable NTP and update time with tor and .onion address.
 
 Requirements
