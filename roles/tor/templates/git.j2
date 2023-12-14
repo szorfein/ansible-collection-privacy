@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+# https://gitlab.tails.boum.org/tails/tails/-/blob/master/config/chroot_local-includes/usr/local/bin/git
+exec /usr/bin/torsocks --isolate /usr/bin/git "$@"

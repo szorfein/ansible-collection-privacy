@@ -1,2 +1,15 @@
 ---
 # defaults file for tor
+tor: false
+tor_config_dir: /etc/torrc.d
+tor_localhost: 127.0.0.1
+
+tor_package_manager: false
+tor_package_manager_port: 9052
+
+tor_stream: false
+tor_stream_port_default: 9050
+tor_stream_port_curl: 9053
+
+tor_ntp: false
+tor_ntp_port: 9054
