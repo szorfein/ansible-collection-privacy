@@ -1,3 +1,5 @@
+- Transparent proxy throught tor.
+
 # 0.10.0, december 2023
 - Add a new roles/tor
   - Install and configure tor and torsocks.

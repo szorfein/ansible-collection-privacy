@@ -9,6 +9,8 @@ szorfein.privacy.tor
   - wget
   - whois
 - Disable NTP and update time with tor and .onion address.
+- Avoid leak and force/redirect all other connections/application non-configured to use Tor (Transparent proxy).
+- Disable non-tcp protocol (UDP / ICMP).
 
 Requirements
 ------------
@@ -58,6 +60,26 @@ Role Variables
   - Default: `9053`
   - Description: Port used for Curl on socks5.
   - Type: str
+- `tor_proxy`
+  - Default: `false`
+  - Description: Enable or not transparent proxy, also install iptables.
+  - Type: bool
+- `tor_proxy_virtual_network`
+  - Default: `10.192.0.0/10`
+  - Description: Virtual address (only Ipv4) used to redirect all tcp connection non-configured on tor.
+  - Type: str
+- `tor_proxy_trans_port`
+  - Default: `9040`
+  - Description: Port used to redirect all tcp connection non-configured on tor.
+  - Type: str
+- `tor_proxy_dns_port`
+  - Default: `9061`
+  - Description: Port used to redirect dns on tor.
+  - Type: str
+- `tor_proxy_non_tor`
+  - Default: `[]`
+  - Description: List of private networks non-comptatible with tor. You may want to add any virtual network for Docker or Qemu like `172.16.0.0/12` or `10.0.0.0/8`
+  - Type: list
 
 Dependencies
 ------------
