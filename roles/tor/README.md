@@ -2,7 +2,7 @@ szorfein.privacy.tor
 ====================
 
 - Install and configure Tor (check for [ConnectionPadding](https://www.whonix.org/wiki/Whonix-Gateway_Security#Tor_Connection_Padding), [Sandbox](https://www.whonix.org/wiki/Whonix-Gateway_Security#Seccomp)...).
-- Configure package manager to use tor [Arch](https://wiki.archlinux.org/title/Tor#Pacman) - [Void](https://docs.voidlinux.org/xbps/repositories/mirrors/tor.html).
+- Configure package manager to use tor [Arch](https://wiki.archlinux.org/title/Tor#Pacman) - [Void](https://docs.voidlinux.org/xbps/repositories/mirrors/tor.html), [Gentoo](https://wiki.gentoo.org/wiki/Tor#Portage).
 - Prevent identity correlation through circuit sharing by using Tor Stream Isolation.
   - curl
   - git
@@ -102,3 +102,4 @@ References
 - https://tails.net/contribute/design/stream_isolation/
 - https://gitlab.tails.boum.org/tails/tails
 - https://www.kicksecure.com/wiki/System_Hardening_Checklist#Tor_Settings
+- https://gitlab.torproject.org/legacy/trac/-/wikis/doc/TorifyHOWTO

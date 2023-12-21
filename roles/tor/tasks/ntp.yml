@@ -1,9 +1,7 @@
 ---
 - name: ntp > installing dependencies
   ansible.builtin.package:
-    name:
-      - curl
-      - cronie
+    name: '{{ tor_ntp_pkgs }}'
     state: present
 
 - name: ntp > installing secure-time-sync

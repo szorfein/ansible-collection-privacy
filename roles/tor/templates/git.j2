@@ -2,5 +2,11 @@
 
 set -o errexit -o nounset
 
+{% if ansible_os_family == 'Gentoo' %}
+# some DNS issue yet...
+exec /usr/bin/git "$@"
+
+{% else %}
 # https://gitlab.tails.boum.org/tails/tails/-/blob/master/config/chroot_local-includes/usr/local/bin/git
 exec /usr/bin/torsocks --isolate /usr/bin/git "$@"
+{% endif %}

@@ -1,2 +1,5 @@
 ---
 # vars file for tor
+tor_ntp_pkgs:
+  - curl
+  - cronie

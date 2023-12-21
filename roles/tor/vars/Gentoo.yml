@@ -1,0 +1,4 @@
+---
+tor_ntp_pkgs:
+  - net-misc/curl
+  - sys-process/cronie

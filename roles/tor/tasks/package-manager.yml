@@ -56,3 +56,15 @@
     content: "Defaults env_keep += \"SOCKS_PROXY\"\n"
     mode: 0644
   when: ansible_distribution == 'Void' and p.stat.exists
+
+- name: pkg-manager > gentoo
+  ansible.builtin.lineinfile:
+    path: /etc/portage/make.conf
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
+  with_items:
+    - regexp: ^FETCHCOMMAND=
+      line: 'FETCHCOMMAND="/usr/bin/curl --socks5-hostname {{ tor_localhost }}:{{ tor_package_manager_port }} --retry 3 --connect-timeout 60 -o \"\${DISTDIR}/\${FILE}\" \"\${URI}\""'
+    - regexp: ^RESUMECOMMAND=
+      line: 'RESUMECOMMAND="/usr/bin/curl -C - --socks5-hostname {{ tor_localhost }}:{{ tor_package_manager_port }} --retry 3 --connect-timeout 60 -o \"\${DISTDIR}/\${FILE}\" \"\${URI}\""'
+  when: ansible_distribution == 'Gentoo'
